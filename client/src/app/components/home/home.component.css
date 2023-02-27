@@ -6,3 +6,17 @@
 h2 {
   align-self: center;
 }
+
+.container > * {
+  margin-top: 20px;
+}
+
+button {
+  align-self: flex-end;
+  margin-right: 50px;
+}
+
+.right-button {
+  display: flex;
+  align-items: center;
+}

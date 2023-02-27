@@ -12,3 +12,8 @@ form {
 h2 {
   align-self: center;
 }
+
+.nav-button {
+  align-self: flex-start;
+  margin-left: 50px;
+}

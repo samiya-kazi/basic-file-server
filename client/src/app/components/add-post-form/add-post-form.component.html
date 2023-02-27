@@ -1,5 +1,8 @@
 <div class="container">
-  <button mat-raised-button color="primary" routerLink="/">View Posts</button>
+  <button mat-raised-button color="primary" routerLink="/" class="nav-button">
+    View Posts
+    <mat-icon>keyboard_backspace</mat-icon>
+  </button>
   <form [formGroup]="addPostForm" (submit)="handleSubmit()">
     <h2>Add a Post</h2>
 
