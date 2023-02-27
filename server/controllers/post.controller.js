@@ -1,7 +1,6 @@
-const fs = require('fs');
 const path = require('path');
 const Post = require('../models/post.model');
-const {getMimeType, uploadFile} = require('../util/fileUpload');
+const { getMimeType, uploadFile } = require('../util/fileUpload');
 
 async function getAllPosts (req, res) {
   try {
