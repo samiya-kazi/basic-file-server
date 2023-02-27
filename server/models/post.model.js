@@ -1,6 +1,6 @@
 const { model, Schema } = require('mongoose');
 
-const fileSchema = new Schema({
+const postSchema = new Schema({
   title: {
     type: String,
     required: true
@@ -9,12 +9,13 @@ const fileSchema = new Schema({
     type: String,
     required: true
   },
-  fileName: {
-    type: String,
-    required: true
-  },
+  fileNames: {
+    type: [String],
+    required: true,
+    default: []
+  }
 })
 
-const File = model('File', fileSchema);
+const Post = model('Post', postSchema);
 
-module.exports = File;
+module.exports = Post;

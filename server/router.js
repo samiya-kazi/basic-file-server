@@ -1,8 +1,9 @@
 const router = require('express').Router();
 const controller = require('./controllers/file.controller');
 
-router.get('/files', controller.getAllFiles);
+router.get('/posts', controller.getAllPosts);
+router.post('/post', controller.addPost);
 router.get('/file/:file', controller.getOneFile);
-router.post('/file', controller.postFile);
+router.post('/file', controller.addFiles);
 
 module.exports = router;

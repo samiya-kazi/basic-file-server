@@ -1,8 +1,9 @@
-const File = require('../models/file.model');
+const Post = require('../models/post.model');
+const uploadFile = require('../util/fileUpload');
 
-async function getAllFiles (req, res) {
+async function getAllPosts (req, res) {
   try {
-    res.send('getAllFiles');
+    res.send('getAllPosts');
   } catch (error) {
     res.status(500).send(error);
     console.log(error);
@@ -20,9 +21,33 @@ async function getOneFile (req, res) {
 }
 
 
-async function postFile (req, res) {
+async function addPost (req, res) {
   try {
-    res.send('postFile')
+    res.send('addPost')
+  } catch (error) {
+    res.status(500).send(error);
+    console.log(error);
+  }
+}
+
+
+async function addFiles (req, res) {
+  try {
+
+    if(req.files) {
+      const fileNames = [];
+      if (Array.isArray(req.files.file)) {
+        req.files.file.forEach(file => {
+          fileNames.push(uploadFile(file));
+        });
+      } else {
+        fileNames.push(uploadFile(req.files.file));
+      }
+
+      res.status(201).send({fileNames});
+    } else {
+      res.status(401).send('Did not get files');
+    }
   } catch (error) {
     res.status(500).send(error);
     console.log(error);
@@ -31,7 +56,8 @@ async function postFile (req, res) {
 
 
 module.exports = {
-  getAllFiles,
+  getAllPosts,
   getOneFile,
-  postFile
+  addPost,
+  addFiles
 }
