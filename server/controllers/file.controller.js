@@ -1,11 +1,12 @@
+const fs = require('fs');
+const path = require('path');
 const Post = require('../models/post.model');
-const uploadFile = require('../util/fileUpload');
+const {getMimeType, uploadFile} = require('../util/fileUpload');
 
 async function getAllPosts (req, res) {
   try {
     const posts = await Post.find({});
     res.send(posts);
-    res.send('getAllPosts');
   } catch (error) {
     res.status(500).send(error);
     console.log(error);
@@ -15,7 +16,21 @@ async function getAllPosts (req, res) {
 
 async function getOneFile (req, res) {
   try {
-    res.send('getOneFile')
+    const { file } = req.params;
+
+    const filePath = './lib/' + file;
+    const contentType = getMimeType(filePath);
+
+    const options = {
+      root: path.join(__dirname, '../'),
+      headers: {
+        'x-timestamp': Date.now(),
+        'x-sent': true
+      }
+    }
+
+    res.setHeader('content-type', contentType);
+    res.sendFile(filePath, options);
   } catch (error) {
     res.status(500).send(error);
     console.log(error);
