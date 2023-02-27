@@ -1,0 +1,14 @@
+.container > * {
+  margin-top: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+  width: 50vw;
+}
+
+h2 {
+  align-self: center;
+}
