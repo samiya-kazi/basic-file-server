@@ -3,6 +3,8 @@ const uploadFile = require('../util/fileUpload');
 
 async function getAllPosts (req, res) {
   try {
+    const posts = await Post.find({});
+    res.send(posts);
     res.send('getAllPosts');
   } catch (error) {
     res.status(500).send(error);
@@ -23,7 +25,13 @@ async function getOneFile (req, res) {
 
 async function addPost (req, res) {
   try {
-    res.send('addPost')
+    const { title, description, fileNames } = req.body;
+    if (title && description && fileNames) {
+      const newPost = await Post.create({title, description, fileNames});
+      res.status(201).send(newPost);
+    } else {
+      res.status(400).send('Invalid inputs');
+    }
   } catch (error) {
     res.status(500).send(error);
     console.log(error);
