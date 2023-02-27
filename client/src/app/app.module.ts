@@ -12,15 +12,19 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { NgxMatFileInputModule } from '@angular-material-components/file-input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PostCardComponent } from './components/post-card/post-card.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    AddPostFormComponent
+    AddPostFormComponent,
+    PostCardComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +37,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
-    NgxMatFileInputModule
+    NgxMatFileInputModule,
+    MatCardModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

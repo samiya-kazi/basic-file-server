@@ -12,6 +12,10 @@ export class ApiClientService {
 
   constructor (private http: HttpClient) { }
 
+  getPosts () : Observable<Post[]> {
+    return this.http.get<Post[]>(this.rootUrl + '/posts');
+  }
+
   postFiles (files: File[]) : Observable<{fileNames: string[]}> {
     const data = new FormData();
     files.forEach(file => data.append('file', file));
