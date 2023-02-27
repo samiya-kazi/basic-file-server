@@ -25,4 +25,9 @@ export class ApiClientService {
   addNewPost (title: string, description: string, fileNames: string[]) : Observable<Post> {
     return this.http.post<Post>(this.rootUrl + '/post', {title, description, fileNames});
   }
+
+  getFile (fileName: string) {
+    return this.http.get(this.rootUrl + '/file/' + fileName, 
+      {responseType: 'blob'});
+  }
 }

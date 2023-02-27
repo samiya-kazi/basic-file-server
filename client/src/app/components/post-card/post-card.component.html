@@ -17,7 +17,7 @@
 
     <div *ngFor="let file of post.fileNames" class="file">
       <a [href]="rootUrl + file" target="_blank" download="file">{{file.split('_').slice(1).join('_')}}</a>
-      <button mat-stroked-button><mat-icon>download</mat-icon>Download</button>
+      <button mat-stroked-button (click)="handleDownload(file)"><mat-icon>download</mat-icon>Download</button>
     </div>
   </mat-expansion-panel>
 </mat-card>
